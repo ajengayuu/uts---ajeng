@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Website | Ajeng Ayu</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f6f0;
+    color: #454b43;
+}
+
+/* NAVIGASI */
+input[type="radio"] {
+    display: none;
+}
+
+header {
+    background: #e8e9df;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 23px;
+    color: #64745c;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav label {
+    cursor: pointer;
+    color: #555d50;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav label:hover {
+    color: #849779;
+}
+
+#home:checked ~ header label[for="home"],
+#biodata:checked ~ header label[for="biodata"],
+#pendidikan:checked ~ header label[for="pendidikan"],
+#hobi:checked ~ header label[for="hobi"],
+#kontak:checked ~ header label[for="kontak"] {
+    color: #728467;
+    font-weight: bold;
+    border-bottom: 2px solid #849779;
+    padding-bottom: 5px;
+}
+
+/* HALAMAN */
+.page {
+    display: none;
+    min-height: 85vh;
+    padding: 65px 10%;
+    animation: muncul 0.4s ease;
+}
+
+#home:checked ~ main #home-page,
+#biodata:checked ~ main #biodata-page,
+#pendidikan:checked ~ main #pendidikan-page,
+#hobi:checked ~ main #hobi-page,
+#kontak:checked ~ main #kontak-page {
+    display: block;
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* BERANDA */
+.home-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 65vh;
+    gap: 40px;
+}
+
+.home-text {
+    max-width: 550px;
+}
+
+.home-text h4 {
+    color: #849779;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.home-text h1 {
+    font-size: 48px;
+    color: #52634d;
+    margin-bottom: 20px;
+}
+
+.home-text p {
+    line-height: 1.9;
+    color: #73786e;
+    margin-bottom: 25px;
+}
+
+.home-image img {
+    width: 290px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 150px 150px 20px 20px;
+    border: 8px solid #e5e7da;
+}
+
+.btn {
+    display: inline-block;
+    background: #849779;
+    color: white;
+    padding: 13px 27px;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: #64745c;
+}
+
+/* JUDUL */
+.judul {
+    text-align: center;
+    font-size: 32px;
+    color: #58694f;
+    margin-bottom: 15px;
+}
+
+.deskripsi {
+    text-align: center;
+    color: #85877e;
+    margin-bottom: 40px;
+}
+
+/* BIODATA */
+.biodata-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.biodata-card {
+    background: #fffefa;
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid #e5e6dc;
+    box-shadow: 0 4px 12px #00000008;
+}
+
+.biodata-card h3 {
+    color: #829474;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.biodata-card p {
+    font-size: 16px;
+}
+
+/* PENDIDIKAN */
+.pendidikan-container {
+    max-width: 650px;
+    margin: auto;
+}
+
+.pendidikan-card {
+    background: #fffefa;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #93a58a;
+}
+
+.pendidikan-card h3 {
+    color: #617457;
+    margin-bottom: 8px;
+}
+
+.pendidikan-card p {
+    color: #777c72;
+    line-height: 1.7;
+}
+
+/* HOBI */
+.hobi-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.hobi-card {
+    background: #fffefa;
+    padding: 35px 20px;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid #e5e6dc;
+    transition: 0.3s;
+}
+
+.hobi-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 20px #00000010;
+}
+
+.hobi-card .emoji {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hobi-card h3 {
+    color: #68795e;
+    margin-bottom: 12px;
+}
+
+.hobi-card p {
+    color: #85877e;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* KONTAK */
+.kontak-box {
+    background: #e8e9df;
+    max-width: 600px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.kontak-box h3 {
+    color: #617457;
+    margin-bottom: 20px;
+}
+
+.kontak-box p {
+    line-height: 2.5;
+    color: #666e60;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    background: #e8e9df;
+    color: #747b6d;
+    padding: 22px;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .home-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .home-text h1 {
+        font-size: 36px;
+    }
+
+    .home-image img {
+        width: 220px;
+        height: 260px;
+    }
+
+    .biodata-container,
+    .hobi-container {
+        grid-template-columns: 1fr;
+    }
+
+    .page {
+        padding: 45px 7%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PILIH HALAMAN -->
+<input type="radio" name="halaman" id="home" checked>
+<input type="radio" name="halaman" id="biodata">
+<input type="radio" name="halaman" id="pendidikan">
+<input type="radio" name="halaman" id="hobi">
+<input type="radio" name="halaman" id="kontak">
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">Ajeng's Profile.</div>
+
+    <nav>
+        <label for="home">Home</label>
+        <label for="biodata">Biodata</label>
+        <label for="pendidikan">Pendidikan</label>
+        <label for="hobi">Hobi</label>
+        <label for="kontak">Kontak</label>
+    </nav>
+</header>
+
+<main>
+
+<!-- HALAMAN HOME -->
+<section class="page" id="home-page">
+
+    <div class="home-content">
+
+        <div class="home-text">
+            <h4>WELCOME TO MY WEBSITE</h4>
+
+            <h1>Halo, Saya Ajeng Ayu!</h1>
+
+            <p>
+                Selamat datang di website pribadi saya.
+                Website ini berisi informasi tentang diri saya,
+                mulai dari biodata, riwayat pendidikan,
+                hobi, hingga informasi kontak.
+            </p>
+
+            <label for="biodata" class="btn">
+                Kenali Saya →
+            </label>
+        </div>
+
+        <div class="home-image">
+            <img src="aku.jpeg"
+                 alt="Foto Ajeng Ayu">
+        </div>
+
+    </div>
+</section>
+
+<!-- HALAMAN BIODATA -->
+<section class="page" id="biodata-page">
+
+    <h2 class="judul">Biodata Diri</h2>
+    <p class="deskripsi">
+        Beberapa informasi mengenai diri saya.
+    </p>
+
+    <div class="biodata-container">
+
+        <div class="biodata-card">
+            <h3>Nama Lengkap</h3>
+            <p>Ajeng Ayuning Larasati</p>
+        </div>
+
+        <div class="biodata-card">
+            <h3>Tempat Lahir</h3>
+            <p>Brebes</p>
+        </div>
+
+        <div class="biodata-card">
+            <h3>Tanggal Lahir</h3>
+            <p>Isi tanggal lahir</p>
+        </div>
+
+        <div class="biodata-card">
+            <h3>Jenis Kelamin</h3>
+            <p>Perempuan</p>
+        </div>
+
+        <div class="biodata-card">
+            <h3>Alamat</h3>
+            <p>Bandung, Jawa Barat</p>
+        </div>
+
+        <div class="biodata-card">
+            <h3>Status</h3>
+            <p>Mahasiswa</p>
+        </div>
+
+        <div class="biodata-card">
+            <h3>Jurusan</h3>
+            <p>Sistem Informasi</p>
+        </div>
+
+        <div class="biodata-card">
+            <h3>Agama</h3>
+            <p>Isi agama</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- HALAMAN PENDIDIKAN -->
+<section class="page" id="pendidikan-page">
+
+    <h2 class="judul">Riwayat Pendidikan</h2>
+    <p class="deskripsi">
+        Perjalanan pendidikan yang pernah saya tempuh.
+    </p>
+
+    <div class="pendidikan-container">
+
+        <div class="pendidikan-card">
+            <h3>SD / Sekolah Dasar</h3>
+            <p>Nama Sekolah: sdn griba 32 bandung</p>
+            <p>Tahun: 2013 - 2019</p>
+        </div>
+
+        <div class="pendidikan-card">
+            <h3>SMP / Sekolah Menengah Pertama</h3>
+            <p>Nama Sekolah: SMP Al- Hadi Bandung</p>
+            <p>Tahun: 2020 - 2023</p>
+        </div>
+
+        <div class="pendidikan-card">
+            <h3>SMA / Sekolah Menengah Atas</h3>
+            <p>Nama Sekolah: SMK Al- Hadi Bandung</p>
+            <p>Tahun: 2023 - 2025</p>
+        </div>
+
+        <div class="pendidikan-card">
+            <h3>Perguruan Tinggi</h3>
+            <p>Universitas: Universitas Informatika dan Bisnis Indonesia</p>
+            <p>Jurusan: Sistem Informasi</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- HALAMAN HOBI -->
+<section class="page" id="hobi-page">
+
+    <h2 class="judul">Hobi dan Kesukaan</h2>
+    <p class="deskripsi">
+        Beberapa hal yang saya sukai di waktu luang.
+    </p>
+
+    <div class="hobi-container">
+
+        <div class="hobi-card">
+            <div class="emoji">🎧</div>
+            <h3>Mendengarkan Musik</h3>
+            <p>
+                Mendengarkan musik untuk menemani
+                aktivitas sehari-hari.
+            </p>
+        </div>
+
+        <div class="hobi-card">
+            <div class="emoji">🎬</div>
+            <h3>Menonton Film</h3>
+            <p>
+                Menonton film sebagai hiburan
+                di waktu senggang.
+            </p>
+        </div>
+
+        <div class="hobi-card">
+            <div class="emoji">🛵</div>
+            <h3>Bermotor</h3>
+            <p>
+                Tertarik untuk bermotor dan mengelilingi kota.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- HALAMAN KONTAK -->
+<section class="page" id="kontak-page">
+
+    <h2 class="judul">Hubungi Saya</h2>
+    <p class="deskripsi">
+        Informasi kontak dan media sosial.
+    </p>
+
+    <div class="kontak-box">
+        <h3>Let's Connect!</h3>
+
+        <p>
+            Nama: Ajeng Ayuning Larasati<br>
+            Email: ajengayu_@gmail.com<br>
+            Instagram: @____iniayuu<br>
+            Domisili: Bandung, Jawa Barat
+        </p>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Ajeng Ayu | Personal Website</p>
+</footer>
+
+</body>
+</html>
+
